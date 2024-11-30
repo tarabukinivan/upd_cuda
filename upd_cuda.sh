@@ -5,8 +5,8 @@ sudo apt-get purge cuda*
 sudo rm -rf /usr/local/cuda*
 sudo rm -rf /usr/lib/nvidia-*
 
-sudo apt autoremove
-sudo apt update
+sudo apt autoremove -y
+sudo apt update -y
 
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
 sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600
