@@ -1,13 +1,14 @@
 wget https://dl.min.io/server/minio/release/linux-amd64/archive/minio_20241107005220.0.0_amd64.deb -O minio.deb
 sudo dpkg -i minio.deb
 
-tee /etc/systemd/system/minio.service
+sudo tee /etc/systemd/system/minio.service > /dev/null <<EOF
 [Unit]
 Description=MinIO
 Documentation=https://min.io/docs/minio/linux/index.html
 Wants=network-online.target
 After=network-online.target
 AssertFileIsExecutable=/usr/local/bin/minio
+
 [Service]
 WorkingDirectory=/usr/local
 User=root
@@ -23,6 +24,7 @@ TasksMax=infinity
 # Disable timeout logic and wait until process is stopped
 TimeoutStopSec=infinity
 SendSIGKILL=no
+
 [Install]
 WantedBy=multi-user.target
 EOF
